@@ -6,6 +6,6 @@ ATMFrontEnd can be opened with qt creator. Maybe we will also include binaries. 
 
 ATMBackEnd is the server the front end connects to and is coden in PHP.
 
-ATMMySQL is our database that is the foundation for everything.
+ATMDatabase is our database that is the foundation for everything.
 
 

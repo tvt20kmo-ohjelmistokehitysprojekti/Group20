@@ -17,9 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | so that a different class/function is called than the one
 | corresponding to the URL.
 |
-| Please see the user guide for complete details:
+| Please see the account_card guide for complete details:
 |
-| https://codeigniter.com/user_guide/general/routing.html
+| https://codeigniter.com/account_card_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -58,7 +58,10 @@ $route['translate_uri_dashes'] = TRUE;
 | Sample REST API Routes
 | -------------------------------------------------------------------------
 */
-$route['api/book/book/(:num)'] = 'api/book/book/id/$1';
-$route['api/user/user/(:num)'] = 'api/user/user/id/$1';
+$route['api/account/account/(:num)'] = 'api/account/account/id/$1';
+$route['api/account_card/account_card/(:num)'] = 'api/account_card/account_card/id/$1';
+$route['api/card/card/(:num)'] = 'api/card/card/id/$1';
+$route['api/owner/owner/(:num)'] = 'api/owner/owner/id/$1';
+$route['api/transaction/transaction/(:num)'] = 'api/transaction/transaction/id/$1';
 
 $route['api/book/book/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/book/book/id/$1/format/$3$4'; 

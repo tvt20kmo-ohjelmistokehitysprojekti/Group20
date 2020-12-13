@@ -25,3 +25,5 @@ Add this kind of lines:
 $route['api/book/book/(:num)'] = 'api/book/book/id/$1';
 
 -Pekka Alaluukas 2020
+
+/// Copy to localfiles Uniserverz/www/Group20/Group20/RestApi-Master/

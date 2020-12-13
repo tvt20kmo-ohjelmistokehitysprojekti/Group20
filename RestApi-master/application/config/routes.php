@@ -63,6 +63,6 @@ $route['api/account_card/account_card/(:num)'] = 'api/account_card/account_card/
 $route['api/card/card/(:num)'] = 'api/card/card/id/$1';
 $route['api/owner/owner/(:num)'] = 'api/owner/owner/id/$1';
 $route['api/transaction/transaction/(:num)'] = 'api/transaction/transaction/id/$1';
-$route['api/account/balance/(:num)'] = 'api/account/balance/id/$1';
+$route['api/balance/balance/(:num)'] = 'api/account/balance/id/$1';
 
 $route['api/book/book/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/book/book/id/$1/format/$3$4'; 

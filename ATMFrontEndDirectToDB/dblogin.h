@@ -24,7 +24,7 @@ private:
     Ui::DBLogin *ui;
 
 signals:
-    void loginClicked();
+    void loginClicked(QString address, QString user, QString password);
 
 };
 

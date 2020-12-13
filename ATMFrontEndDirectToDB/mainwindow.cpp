@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->windowStack->addWidget(&login);
     ui->windowStack->addWidget(&logout);
     ui->windowStack->addWidget(&mainMenu);
-    ui->windowStack->addWidget(&amount);
     ui->windowStack->addWidget(&selectAccount);
     ui->windowStack->addWidget(&statement);
     ui->windowStack->addWidget(&transfer);
@@ -24,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->windowStack->setCurrentWidget(&dbLogin);
 
     connect(&selectAccount, SIGNAL(selectClicked()), this, SLOT(selectAccount_selectClicked()));
-    connect(&dbLogin, SIGNAL(loginClicked()), this, SLOT(dbLogin_loginClicked()));
+    connect(&dbLogin, &DBLogin::loginClicked, this, &MainWindow::dbLogin_loginClicked);
     connect(&login, SIGNAL(loginClicked()), this, SLOT(login_loginClicked()));
     connect(&mainMenu, SIGNAL(logoutClicked()), this, SLOT(mainMenu_logoutClicked()));
     connect(&selectAccount, SIGNAL(logoutClicked()), this, SLOT(selectAccount_logoutClicked()));
@@ -59,9 +58,14 @@ void MainWindow::selectAccount_selectClicked()
     ui->windowStack->setCurrentWidget(&mainMenu);
 }
 
-void MainWindow::dbLogin_loginClicked()
+void MainWindow::dbLogin_loginClicked(QString address, QString user, QString password)
 {
-    ui->windowStack->setCurrentWidget(&login);
+    bool ok = database.open(address, "opisk_t9ylan01", user, password);
+    if (ok)
+    {
+        ui->windowStack->setCurrentWidget(&login);
+    }
+
 }
 
 void MainWindow::login_loginClicked()

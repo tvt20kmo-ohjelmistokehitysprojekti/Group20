@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 #include <amount.h>
 #include <balance.h>
 #include <dblogin.h>
@@ -15,6 +16,9 @@
 #include <withdrawal.h>
 #include <withdrawalok.h>
 #include <transferok.h>
+
+#include <database.h>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,6 +46,7 @@ private:
     Withdrawal withdrawal;
     WithdrawalOK withdrawalOK;
     TransferOK transferOK;
+    Database database;
 
     void gotoLogin();
     void gotoMainMenu();
@@ -56,7 +61,7 @@ private:
 
 private slots:
     void selectAccount_selectClicked();
-    void dbLogin_loginClicked();
+    void dbLogin_loginClicked(QString address, QString user, QString password);
     void login_loginClicked();
     void mainMenu_logoutClicked();
     void selectAccount_logoutClicked();

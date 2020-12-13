@@ -22,7 +22,7 @@ void DBLogin::clear()
 
 void DBLogin::on_btnLogin_clicked()
 {
-    emit loginClicked();
+    emit loginClicked(ui->lineAddress->text(), ui->lineUsername->text(), ui->linePassword->text());
 }
 
 void DBLogin::on_btnCancel_clicked()

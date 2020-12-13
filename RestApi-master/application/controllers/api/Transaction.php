@@ -34,7 +34,7 @@ class Transaction extends REST_Controller {
     public function Transaction_get()
     {
     	
-    	$id = $this->get('account_id')
+    	$id = $this->get('id');
 
     	// If id doesn't exist return all transactions
     	if($id === NULL)
@@ -57,6 +57,7 @@ class Transaction extends REST_Controller {
     	// Find and return particular transaction
     	else
     	{
+
     		//Validate id
     		if($id <= 0)
     		{
@@ -64,9 +65,9 @@ class Transaction extends REST_Controller {
     			$this->response(NULL, REST_Controller::HTTP_BAD_REQUEST);
     		}
 
-    		//Get transaction from database
-    		$transaction = this->Transaction_model->get_transaction($id);
-    		if(!empty($transaction))
+        $transaction = $this->Transaction_model->get_transaction($id);
+
+    	  if(!empty($transaction))
     		{
     			$this->set_response($transaction, REST_Controller::HTTP_OK);
     		}
@@ -78,7 +79,7 @@ class Transaction extends REST_Controller {
     			], REST_Controller::HTTP_NOT_FOUND);
     		}
     	}
-
+    }
    	public function add_transaction()
    	{
    		$add_transaction = array(
@@ -89,7 +90,7 @@ class Transaction extends REST_Controller {
    		if($insert_id)
    		{
    			$message = [
-   				'transaction' = $insert_id,,
+   				'transaction' => $insert_id,
    				'time' => $this->post('time'),
    				'message' => 'Transaction added',
    			];

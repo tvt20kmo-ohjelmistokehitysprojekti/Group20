@@ -4,11 +4,10 @@
  */
 class Card_model extends CI_model
 {
-  function get_card($id){
-    $this->db->select('*');
-    $this->db->from('account-card');
+  $this->db->select('*');
+    $this->db->from('card');
     if($id !== NULL) {
-      $this->db->where('account_ID',$id);
+      $this->db->where('card_number',$id);
     }
     return $this->db->get()->result_array();
   }

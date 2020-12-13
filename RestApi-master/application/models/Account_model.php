@@ -9,7 +9,7 @@ class Account_model extends CI_model
     $this->db->select('*');
     $this->db->from('card');
     if($id !== NULL) {
-      $this->db->where('owner_ID',$id);
+      $this->db->where('id',$id);
     }
     return $this->db->get()->result_array();
   }
@@ -19,7 +19,7 @@ class Account_model extends CI_model
     $this->db->select('*');
     $this->db->from('account');
     if($id !== NULL) {
-      $this->db->where('balance',$id);
+      $this->db->where('ID',$id);
     }
     return $this->db->get()->result_array();
   }

@@ -9,14 +9,14 @@ class Transaction_model extends CI_model
     $this->db->select('*');
     $this->db->from('transaction');
     if($id !== NULL) {
-      $this->db->where('idtransaction',$id);
+      $this->db->where('id',$id);
     }
     return $this->db->get()->result_array();
   }
 
   function withdraw($id, $update_data)
   {
-  	$this->db->where('idtransaction', $id);
+  	$this->db->where('id', $id);
   	$this->db->update('transaction', $update_data);
   	if($this->db->affected_rows()>0)
   	{

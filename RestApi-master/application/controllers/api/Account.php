@@ -34,7 +34,7 @@ class Account extends REST_Controller {
     {
         // Account from a data store e.g. database  
 
-        $id = $this->input->get('owner_ID');
+        $id = $this->input->get('id');
 
         // If the id parameter doesn't exist return all accounts
         if ($id === NULL)
@@ -81,3 +81,55 @@ class Account extends REST_Controller {
         }
 
     }
+    public function balance_get()
+    {
+        // Account from a data store e.g. database  
+
+        $id = $this->input->get('id');
+
+        // If the id parameter doesn't exist return all accounts
+        if ($id === NULL)
+        {
+            $balance=$this->Account_model->get_balance(NULL);
+            // Check if the account data store contains account (in case the database result returns NULL)
+            if ($balance)
+            {
+                // Set the response and exit
+                $this->response($balance, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+            }
+            else
+            {
+                // Set the response and exit
+                $this->response([
+                    'status' => FALSE,
+                    'message' => 'No balance were found'
+                ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+            }
+        }
+
+         // Find and return a single record for a particular balance.
+        else {
+            // Validate the id.
+            if ($id <= 0)
+            {
+                // Invalid id, set the response and exit.
+                $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+            }
+
+            // Get the balance from the database, using the id as key for retrieval.
+            $balance=$this->Account_model->get_balance($id);
+            if (!empty($balance))
+            {
+                $this->set_response($balance, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+            }
+            else
+            {
+                $this->set_response([
+                    'status' => FALSE,
+                    'message' => 'balance could not be found'
+                ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+            }
+        }
+
+    }
+}
